@@ -46,7 +46,7 @@ Then you can try `bundle install` again.
 
 
 ```sh
-bundle exec rake db:migrate
+bundle exec rails db:migrate
 ```
 **NOTE:** Troubleshooting
 
@@ -55,7 +55,7 @@ bundle exec rake db:migrate
 * If rails complains that `ExecJS::RuntimeUnavailable: Could not find a JavaScript runtime`, then you need to install node.js and re-attempt the migrations:
 
 ```sh
-sudo apt install nodejs && bundle exec rake db:migrate
+sudo apt install nodejs && bundle exec rails db:migrate
 ```
 
 * If rails complains that `Sprockets::Railtie::ManifestNeededError: Expected to find a manifest file in 'app/assets/config/manifest.js'`, then you need to create that file and put some stuff in it by running the following in the terminal:
@@ -68,20 +68,20 @@ mkdir -p app/assets/config
 } > app/assests/config/manifest.js
 ```
 
-* Then re-run `bundle exec rake db:migrate`.  If rails complains that `Directly inheriting from ActiveRecord::Migration is not supported`, then you need to add the rails version to your migration files, e.g. `class CreateMovies < ActiveRecord::Migration[7.0]`.
+* Then re-run `bundle exec rails db:migrate`.  If rails complains that `Directly inheriting from ActiveRecord::Migration is not supported`, then you need to add the rails version to your migration files, e.g. `class CreateMovies < ActiveRecord::Migration[7.0]`.
 
-* This should be the last time you have to attempt to re-run `bundle exec rake db:migrate`.
+* This should be the last time you have to attempt to re-run `bundle exec rails db:migrate`.
 
 Copy the development schema over to the test environment by running:
 
 ```sh
-bundle exec rake db:test:prepare
+bundle exec rails db:test:prepare
 ```
 
 4. **IMPORTANT** Add some more seed data in `db/seeds.rb`. I want you to add at least 3 more movies.  Then, add the seed data to the database by running
 
 ```sh
-bundle exec rake db:seed
+bundle exec rails db:seed
 ```
 
 5. Double check that RSpec is correctly set up by running
@@ -140,7 +140,7 @@ bundle exec cucumber
 
 * Hint: you may find the `rails generate migration ...` tool useful.
 * Hint: you may find the [`add_column` method of `ActiveRecord::Migration`](http://apidock.com/rails/ActiveRecord/ConnectionAdapters/SchemaStatements/add_column) useful.
-* Remember that once the migration is applied, you also have to do `bundle exec rake db:test:prepare`
+* Remember that once the migration is applied, you also have to do `bundle exec rails db:test:prepare`
 to load the new post-migration schema into the test database.
 
 <details>
