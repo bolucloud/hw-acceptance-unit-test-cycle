@@ -40,6 +40,8 @@ to make sure all gems are properly installed.
 
 * **rbenv**: verify that `rbenv` is installed (for example, `rbenv --version`) and run `rbenv versions` to see which Ruby versions are available and `rbenv local <version>` to make a particular version active.  If no versions satisfying the Gemfile dependency are installed, you can run `rbenv install <version>` to install a new version, then `rbenv local <version>` to use it.
 
+**NOTE:** If Bundler reports an error while installing `sassc` (a dependency of `saas-rails`),  there is a work-around available in the [Gemfile](rottenpotatoes/Gemfile).
+
 Then you can try `bundle install` again.
 
 3. Create the initial database schema:
