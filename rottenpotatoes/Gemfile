@@ -31,8 +31,13 @@ group :production do
 end
 
 gem 'jquery-rails'
-gem 'sass-rails'
 gem 'uglifier'
+
+# some mac users reported trouble with the following gem:
+gem 'sass-rails'
+# a solution found by shmishra is to instead use the following two gems:
+# gem 'sass-embedded'
+# gem 'sprockets-rails', '~> 3.5'
 
 gem 'net-imap', require: false
 gem 'net-pop', require: false
