@@ -175,13 +175,13 @@ bundle exec cucumber
   Read the Cucumber results.  You should see that every step of the scenarios are undefined. What will you have to do to address that?  Specifically, how do you resolve the very first of those: Undefined step: "I go to the edit page for "Alien""
   </summary>
   <blockquote>
-  You'll have to write a definition. Right now, it's not a bad idea to write these steps in `features/step_definitions/movie_steps.rb`.
+  You'll have to write a definition. Right now, it's not a bad idea to write these steps in `features/step_definitions/movies_steps.rb`.
   </blockquote>
 </details>
 
 ### Define Steps, Implement a Step
 
-1. As a first step, you can simply copy+paste the snippets that Cucumber gives you (at the bottom of the report) into `movie_steps.rb`.  **Do it now.**
+1. As a first step, you can simply copy+paste the snippets that Cucumber gives you (at the bottom of the report) into `movies_steps.rb`.  **Do it now.**
 2. Run Cucumber again: `bundle exec cucumber`.
    * See that all steps are now pending or skipped (because an earlier step is pending).
 3. Implement the step `I go to the edit page for {string}`
