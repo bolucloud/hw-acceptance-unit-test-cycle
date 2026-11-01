@@ -34,12 +34,14 @@ When('I fill in {string} with {string}') do |field, value|
   #pending # Write code here that turns the phrase above into concrete actions
 end
 
-When('I press {string}') do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+When('I press {string}') do |button|
+  click_button(button)
+  # pending # Write code here that turns the phrase above into concrete actions
 end
 
-Then('the director of {string} should be {string}') do |string, string2|
-  pending # Write code here that turns the phrase above into concrete actions
+Then('the director of {string} should be {string}') do |title, director|
+  expect(Movie.find_by!(title: title).director).to eq(director)
+  #pending # Write code here that turns the phrase above into concrete actions
 end
 
 Given('I am on the details page for {string}') do |string|
