@@ -60,8 +60,9 @@ Then('I should be on the Similar Movies page for {string}') do |title|
   expect(page).to have_current_path(similar_movie_path(movie))
 end
 
-Then('I should see {string}') do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+Then('I should see {string}') do |text|
+  #pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_text(text)
 end
 
 Then('I should not see {string}') do |string|
