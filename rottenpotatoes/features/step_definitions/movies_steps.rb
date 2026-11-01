@@ -49,8 +49,9 @@ Given('I am on the details page for {string}') do |title|
   #pending # Write code here that turns the phrase above into concrete actions
 end
 
-When('I follow {string}') do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+When('I follow {string}') do |link_text|
+  # pending # Write code here that turns the phrase above into concrete actions
+  click_link(link_text)
 end
 
 Then('I should be on the Similar Movies page for {string}') do |string|
