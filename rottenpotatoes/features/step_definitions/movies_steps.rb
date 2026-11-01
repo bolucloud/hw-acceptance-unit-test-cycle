@@ -54,8 +54,10 @@ When('I follow {string}') do |link_text|
   click_link(link_text)
 end
 
-Then('I should be on the Similar Movies page for {string}') do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+Then('I should be on the Similar Movies page for {string}') do |title|
+  #pending # Write code here that turns the phrase above into concrete actions
+  movie = Movie.find_by!(title: title)
+  expect(page).to have_current_path(similar_movie_path(movie))
 end
 
 Then('I should see {string}') do |string|
