@@ -44,8 +44,9 @@ Then('the director of {string} should be {string}') do |title, director|
   #pending # Write code here that turns the phrase above into concrete actions
 end
 
-Given('I am on the details page for {string}') do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+Given('I am on the details page for {string}') do |title|
+  visit movie_path(Movie.find_by!(title: title))
+  #pending # Write code here that turns the phrase above into concrete actions
 end
 
 When('I follow {string}') do |string|
