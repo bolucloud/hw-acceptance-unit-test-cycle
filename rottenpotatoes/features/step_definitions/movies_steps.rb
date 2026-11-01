@@ -65,8 +65,9 @@ Then('I should see {string}') do |text|
   expect(page).to have_text(text)
 end
 
-Then('I should not see {string}') do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+Then('I should not see {string}') do |text|
+  #pending # Write code here that turns the phrase above into concrete actions
+  expect(page).not_to have_text(text)
 end
 
 Then('I should be on the home page') do
