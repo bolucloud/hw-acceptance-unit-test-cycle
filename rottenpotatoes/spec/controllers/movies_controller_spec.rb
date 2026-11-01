@@ -13,8 +13,35 @@ RSpec.describe MoviesController, type: :controller do
   end
 
   describe "when trying to find movies by the same director" do
-    it "returns a valid collection when a valid director is present"
+    it "returns a valid collection when a valid director is present" do
       # TODO(student): implement this test
+      movie = Movie.create(
+        title: "Bolus world", 
+        rating: "PG", 
+        release_date: "2024-08-19",
+        director: "Bolu"
+      )
+
+      second_movie = Movie.create(
+        title: "Bolus second world",
+        rating: "PG", 
+        release_date: "2023-10-03",
+        director: "Bolu"
+      )
+
+      third_movie = Movie.create(
+        title: "Bolus third world", 
+        rating: "PG", 
+        release_date: "2022-05-15",
+        director: "Sean Penn"
+      )
+
+      get :similar, params: {id: movie.id}
+      expect(response).to have_http_status(:success)
+      expect(assigns(:movies)).to match_array([second_movie])
+    ensure
+      Movie.where(id: [movie.id, second_movie.id, third_movie.id]).destroy_all
+    end
 
     it "redirects to index with a warning when no director is present"
       # TODO(student): implement this test
