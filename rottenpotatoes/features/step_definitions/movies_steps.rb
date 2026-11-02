@@ -26,63 +26,45 @@ Then(/I should see all the movies/) do
 end
 
 When('I go to the edit page for {string}') do |title|
-  visit edit_movie_path(Movie.find_by!(title: title))
-  # pending # Write code here that turns the phrase above into concrete actions
+  visit edit_movie_path(Movie.find_by!(title: title))  
 end
 
 When('I fill in {string} with {string}') do |field, value|
   fill_in(field, with: value)
-  # pending # Write code here that turns the phrase above into concrete actions
 end
 
 When('I press {string}') do |button|
   click_button(button)
-  # pending # Write code here that turns the phrase above into concrete actions
 end
 
 Then('the director of {string} should be {string}') do |title, director|
   expect(Movie.find_by!(title: title).director).to eq(director)
-  # pending # Write code here that turns the phrase above into concrete actions
 end
 
 Given('I am on the details page for {string}') do |title|
   visit movie_path(Movie.find_by!(title: title))
-  # pending # Write code here that turns the phrase above into concrete actions
 end
 
 When('I follow {string}') do |link_text|
-  # pending # Write code here that turns the phrase above into concrete actions
   click_link(link_text)
 end
 
 Then('I should be on the Similar Movies page for {string}') do |title|
-  # pending # Write code here that turns the phrase above into concrete actions
   movie = Movie.find_by!(title: title)
   expect(page).to have_current_path(similar_movie_path(movie))
 end
 
 Then('I should see {string}') do |text|
-  # pending # Write code here that turns the phrase above into concrete actions
   expect(page).to have_text(text)
 end
 
 Then('I should not see {string}') do |text|
-  # pending # Write code here that turns the phrase above into concrete actions
   expect(page).not_to have_text(text)
 end
 
 Then('I should be on the home page') do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_current_path(movies_path)
 end
-
-# Given('I am on the details page for {string}') do |title|
-#   movie = Movie.find_by!(title: title)
-#   visit movie_path(movie)
-# end
-
-# When('I follow {string}') do |link_text|
-#   click_link(link_text)
-# end
 
 Then('I should be on the edit page for {string}') do |title|
   movie = Movie.find_by!(title: title)
