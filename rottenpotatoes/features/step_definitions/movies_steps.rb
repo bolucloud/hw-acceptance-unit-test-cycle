@@ -74,3 +74,17 @@ end
 Then('I should be on the home page') do
   pending # Write code here that turns the phrase above into concrete actions
 end
+
+# Given('I am on the details page for {string}') do |title|
+#   movie = Movie.find_by!(title: title)
+#   visit movie_path(movie)
+# end
+
+# When('I follow {string}') do |link_text|
+#   click_link(link_text)
+# end
+
+Then('I should be on the edit page for {string}') do |title|
+  movie = Movie.find_by!(title: title)
+  expect(page).to have_current_path(edit_movie_path(movie))
+end

@@ -32,3 +32,8 @@ Scenario: can't find movies with the same director if we don't know the director
   When  I follow "Find Movies With Same Director"
   Then  I should be on the home page
   And   I should see "'Alien' has no director info"
+
+Scenario: edit a movies details
+  Given I am on the details page for "Alien"
+  When I follow "Edit"
+  Then I should be on the edit page for "Alien"

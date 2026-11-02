@@ -152,4 +152,48 @@ RSpec.describe MoviesController, type: :controller do
       movie.destroy
     end
   end
+
+  describe 'director actions' do
+    it 'saves the director when new movie is created' do
+      post :create, params: { 
+        movie: { 
+          title: 'Test BOO Movie', 
+          rating: 'PG', 
+          release_date: '2024-01-01', 
+          director: 'New BOO Director' 
+        } 
+      }
+      new_movie = Movie.find_by(title: 'Test BOO Movie')
+      expect(new_movie.director).to eq('New BOO Director')
+    ensure
+      new_movie.destroy
+    end
+
+    it 'updates the director for a movie' do
+      movie = Movie.create(
+        title: 'Bolus second world',
+        rating: 'PG',
+        release_date: '2021-10-03',
+        director: 'Bolu'
+      )
+      put :update, params: { id: movie.id, movie: { director: 'Updated Bolu Director' } }
+      movie.reload
+      expect(movie.director).to eq('Updated Bolu Director')
+    ensure
+      movie.destroy
+    end
+
+    it 'shows no movie when no other movie has the same director' do
+      movie = Movie.create(
+        title: 'Unique Bolu Movie',
+        rating: 'PG',
+        release_date: '2024-08-19',
+        director: 'Unique Bolu Director'
+      )
+      get :similar, params: { id: movie.id }
+      expect(assigns(:movies)).to be_empty
+    ensure
+      movie.destroy
+    end
+  end
 end
