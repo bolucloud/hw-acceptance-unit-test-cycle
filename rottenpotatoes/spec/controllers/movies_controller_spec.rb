@@ -155,13 +155,13 @@ RSpec.describe MoviesController, type: :controller do
 
   describe 'director actions' do
     it 'saves the director when new movie is created' do
-      post :create, params: { 
-        movie: { 
-          title: 'Test BOO Movie', 
-          rating: 'PG', 
-          release_date: '2024-01-01', 
-          director: 'New BOO Director' 
-        } 
+      post :create, params: {
+        movie: {
+          title: 'Test BOO Movie',
+          rating: 'PG',
+          release_date: '2024-01-01',
+          director: 'New BOO Director'
+        }
       }
       new_movie = Movie.find_by(title: 'Test BOO Movie')
       expect(new_movie.director).to eq('New BOO Director')

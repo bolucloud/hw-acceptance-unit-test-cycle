@@ -26,7 +26,7 @@ Then(/I should see all the movies/) do
 end
 
 When('I go to the edit page for {string}') do |title|
-  visit edit_movie_path(Movie.find_by!(title: title))  
+  visit edit_movie_path(Movie.find_by!(title: title))
 end
 
 When('I fill in {string} with {string}') do |field, value|
