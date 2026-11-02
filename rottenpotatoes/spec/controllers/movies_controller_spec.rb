@@ -43,8 +43,19 @@ RSpec.describe MoviesController, type: :controller do
       Movie.where(id: [movie.id, second_movie.id, third_movie.id]).destroy_all
     end
 
-    it "redirects to index with a warning when no director is present"
-      # TODO(student): implement this test
+    it "redirects to index with a warning when no director is present" do
+      movie = Movie.create!(
+        title: "Bolus world", 
+        rating: "PG", 
+        release_date: "2024-08-19",
+        director: nil
+      )
+      get :similar, params: {id: movie.id}
+      expect(response).to redirect_to(movies_path)
+      expect(flash[:notice]).to match(/has no director information/)
+    ensure
+      movie.destroy
+    end
   end
 
   describe "creates" do
