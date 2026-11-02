@@ -1,37 +1,36 @@
-
-Given /the following movies exist/ do |movies_table|
+Given(/the following movies exist/) do |movies_table|
   movies_table.hashes.each do |movie|
     Movie.create movie
   end
 end
 
-Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
+Then(/I should see "(.*)" before "(.*)"/) do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
   expect(page.body.index(e1) < page.body.index(e2))
 end
 
-When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
+When(/I (un)?check the following ratings: (.*)/) do |uncheck, rating_list|
   rating_list.split(', ').each do |rating|
-    step %{I #{uncheck.nil? ? '' : 'un'}check "ratings_#{rating}"}
+    step %(I #{uncheck.nil? ? '' : 'un'}check "ratings_#{rating}")
   end
 end
 
-Then /I should see all the movies/ do
+Then(/I should see all the movies/) do
   # Make sure that all the movies in the app are visible in the table
   Movie.all.each do |movie|
-    step %{I should see "#{movie.title}"}
+    step %(I should see "#{movie.title}")
   end
 end
 
 When('I go to the edit page for {string}') do |title|
   visit edit_movie_path(Movie.find_by!(title: title))
-  #pending # Write code here that turns the phrase above into concrete actions
+  # pending # Write code here that turns the phrase above into concrete actions
 end
 
 When('I fill in {string} with {string}') do |field, value|
   fill_in(field, with: value)
-  #pending # Write code here that turns the phrase above into concrete actions
+  # pending # Write code here that turns the phrase above into concrete actions
 end
 
 When('I press {string}') do |button|
@@ -41,12 +40,12 @@ end
 
 Then('the director of {string} should be {string}') do |title, director|
   expect(Movie.find_by!(title: title).director).to eq(director)
-  #pending # Write code here that turns the phrase above into concrete actions
+  # pending # Write code here that turns the phrase above into concrete actions
 end
 
 Given('I am on the details page for {string}') do |title|
   visit movie_path(Movie.find_by!(title: title))
-  #pending # Write code here that turns the phrase above into concrete actions
+  # pending # Write code here that turns the phrase above into concrete actions
 end
 
 When('I follow {string}') do |link_text|
@@ -55,18 +54,18 @@ When('I follow {string}') do |link_text|
 end
 
 Then('I should be on the Similar Movies page for {string}') do |title|
-  #pending # Write code here that turns the phrase above into concrete actions
+  # pending # Write code here that turns the phrase above into concrete actions
   movie = Movie.find_by!(title: title)
   expect(page).to have_current_path(similar_movie_path(movie))
 end
 
 Then('I should see {string}') do |text|
-  #pending # Write code here that turns the phrase above into concrete actions
+  # pending # Write code here that turns the phrase above into concrete actions
   expect(page).to have_text(text)
 end
 
 Then('I should not see {string}') do |text|
-  #pending # Write code here that turns the phrase above into concrete actions
+  # pending # Write code here that turns the phrase above into concrete actions
   expect(page).not_to have_text(text)
 end
 
