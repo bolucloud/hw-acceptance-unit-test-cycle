@@ -98,5 +98,56 @@ RSpec.describe MoviesController, type: :controller do
       movie.destroy
     end
   end
+
+  describe "movie pages" do
+    it "shows movie index page" do
+      get :index
+      expect(response).to render_template(:index)
+    end
+
+    it "shows movie details page" do
+      movie = Movie.create(
+        title: "Bolus second world",
+        rating: "PG", 
+        release_date: "2023-10-03",
+        director: "Bolu"
+      )
+      get :show, params: { id: movie.id }
+      expect(response).to render_template(:show)
+      expect(response).to have_http_status(:success)
+    ensure
+      movie.destroy
+    end
+
+    it "shows the movie edit form" do
+      movie = Movie.create(
+        title: "Bolus second world",
+        rating: "PG", 
+        release_date: "2021-10-03",
+        director: "Bolu"
+      )
+      get :edit, params: { id: movie.id }
+      expect(response).to render_template(:edit)
+      expect(assigns(:movie)).to eq(movie)
+    ensure
+      movie.destroy
+    end
+
+    it "deletes a movie" do
+      movie = Movie.create(
+        title: "Bolus second world",
+        rating: "PG", 
+        release_date: "2021-10-03",
+        director: "Bolu"
+      )
+      expect {
+        delete :destroy, params: { id: movie.id }
+      }.to change(Movie, :count).by(-1)
+      expect(response).to redirect_to(movies_path)
+      expect(flash[:notice]).to match(/Movie 'Bolus second world' deleted./)
+    ensure
+      movie.destroy
+    end
+  end
 end
 

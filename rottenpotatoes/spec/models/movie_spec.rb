@@ -54,6 +54,18 @@ RSpec.describe Movie, type: :model do
     ensure
       Movie.where(id: [movie.id, other_movie.id]).destroy_all
     end
+
+    it "gives no movies where there's no director info" do
+      movie = Movie.create(
+          title: "NilDirector Movie", 
+          rating: "PG", 
+          release_date: "2011-01-11",
+          director: nil
+      )
+      expect(movie.others_by_same_director).to be_empty
+    ensure
+      movie.destroy
+    end
   end
 end
 
