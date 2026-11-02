@@ -1,3 +1,4 @@
+# Movies model for rottenpotatoes application.
 # frozen_string_literal: true
 
 class Movie < ActiveRecord::Base

@@ -1,3 +1,4 @@
+# Movies controller for rottenpotatoes application.
 # frozen_string_literal: true
 
 class MoviesController < ApplicationController

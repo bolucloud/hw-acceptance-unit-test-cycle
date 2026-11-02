@@ -1,3 +1,4 @@
+# Movies helper for rottenpotatoes application.
 # frozen_string_literal: true
 
 module MoviesHelper

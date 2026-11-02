@@ -1,3 +1,4 @@
+# Base controller for rottenpotatoes application. All other controllers inherit from this controller.
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
