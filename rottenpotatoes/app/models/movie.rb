@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Movie < ActiveRecord::Base
   def others_by_same_director
     return Movie.none if director.blank?

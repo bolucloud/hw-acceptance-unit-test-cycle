@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rottenpotatoes::Application.routes.draw do
   resources :movies do
     get :similar, on: :member
