@@ -1,6 +1,6 @@
-# Movies helper for rottenpotatoes application.
 # frozen_string_literal: true
 
+# Movies helper for rottenpotatoes application.
 module MoviesHelper
   # Checks if a number is odd:
   def oddness(count)

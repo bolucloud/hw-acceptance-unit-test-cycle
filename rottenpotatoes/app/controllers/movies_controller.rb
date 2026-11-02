@@ -1,6 +1,6 @@
-# Movies controller for rottenpotatoes application.
 # frozen_string_literal: true
 
+# Movies controller for rottenpotatoes application.
 class MoviesController < ApplicationController
   def show
     id = params[:id] # retrieve movie ID from URI route
